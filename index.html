@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Happy Birthday, Lohitaksh!</title>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -125,47 +125,27 @@
         margin-top: 30px;
         background-color: #000; /* Black background */
         padding: 20px 0;
+        overflow: visible; /* allow pop out outside container */
     }
 
     .envelope-box {
         width: 280px;
         height: 210px;
-        position: relative;
+        position: relative; /* IMPORTANT for absolute children */
         cursor: pointer;
         border-radius: 10px;
-        overflow: visible; /* allow pop-out */
-        background: transparent; /* no white bg */
+        background: transparent;
         box-shadow: 0 0 15px #d2a679;
         transition: box-shadow 0.3s ease;
+        overflow: visible; /* allow pop out */
+        z-index: 1;
     }
+
     .envelope-box:hover {
         box-shadow: 0 0 25px #ffd966;
     }
 
-    .envelope-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center center;
-        border-radius: 10px;
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: transform 0.5s ease, opacity 0.5s ease;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        z-index: 10;
-        cursor: pointer;
-        background: transparent;
-        transform: scale(1);
-    }
-
-    .envelope-img.open {
-        display: block;
-        transform: scale(1.3);
-        z-index: 20;
-    }
-
+    /* envelope cover (the flap) */
     .envelope-cover {
         width: 100%;
         height: 100%;
@@ -175,8 +155,9 @@
         top: 0;
         left: 0;
         transition: opacity 0.4s ease;
-        z-index: 15;
+        z-index: 10;
         box-shadow: 0 5px 10px #b1895e inset;
+        pointer-events: auto;
     }
 
     .envelope-cover::before {
@@ -188,6 +169,35 @@
         border-right: 140px solid transparent;
         border-bottom: 105px solid #e0bc8f;
         border-radius: 10px;
+    }
+
+    /* image inside envelope */
+    .envelope-img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 280px;  /* same as envelope width */
+        height: auto;
+        max-height: 350px; /* limit height */
+        object-fit: contain;
+        object-position: center center;
+        border-radius: 10px;
+        display: block;
+        transform: translate(-50%, -50%) scale(1);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        z-index: 20;
+        opacity: 0;
+        pointer-events: none;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    /* when opened */
+    .envelope-img.open {
+        opacity: 1;
+        transform: translate(-50%, -120%) scale(1.3);
+        pointer-events: auto;
     }
 </style>
 </head>
@@ -213,7 +223,7 @@ I know we don’t meet often—okay fine, we never meet—but somehow our bond s
 I’m forever grateful to have you. You’re probably the only best and right choice I’ve made in life!
 Thank you for staying and always being there for this weird, chaotic, childish, and crazy friend.
 
-Once again, Happy Birthday My IDIOT!!!!
+Once again, Happy Birthday My IDIOT!!!!        
         </p>
     </div>
 
@@ -284,27 +294,27 @@ Once again, Happy Birthday My IDIOT!!!!
 
         <div class="envelope-box" onclick="openEnvelope(1)">
             <div class="envelope-cover" id="cover1"></div>
-            <img src="img1.jpg" id="photo1" class="envelope-img">
+            <img src="img1.jpg" id="photo1" class="envelope-img" alt="Memory 1" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(2)">
             <div class="envelope-cover" id="cover2"></div>
-            <img src="img2.jpg" id="photo2" class="envelope-img">
+            <img src="img2.jpg" id="photo2" class="envelope-img" alt="Memory 2" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(3)">
             <div class="envelope-cover" id="cover3"></div>
-            <img src="img3.jpg" id="photo3" class="envelope-img">
+            <img src="img3.jpg" id="photo3" class="envelope-img" alt="Memory 3" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(4)">
             <div class="envelope-cover" id="cover4"></div>
-            <img src="img4.jpg" id="photo4" class="envelope-img">
+            <img src="img4.jpg" id="photo4" class="envelope-img" alt="Memory 4" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(5)">
             <div class="envelope-cover" id="cover5"></div>
-            <img src="img5.jpg" id="photo5" class="envelope-img">
+            <img src="img5.jpg" id="photo5" class="envelope-img" alt="Memory 5" />
         </div>
 
     </div>
@@ -338,6 +348,7 @@ Once again, Happy Birthday My IDIOT!!!!
         // Close all envelopes first
         document.querySelectorAll(".envelope-img").forEach(img => {
             img.classList.remove("open");
+            img.style.opacity = '0';
         });
         document.querySelectorAll(".envelope-cover").forEach(cover => {
             cover.style.opacity = "1";
@@ -350,7 +361,9 @@ Once again, Happy Birthday My IDIOT!!!!
 
         cover.style.opacity = "0";
         cover.style.pointerEvents = "none";
+
         photo.classList.add("open");
+        photo.style.opacity = '1';
     }
 </script>
 
