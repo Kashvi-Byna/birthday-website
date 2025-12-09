@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday, Lohitaksh!</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        background: #000;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    section {
+        display: none;
+        padding-top: 10vh;
+        min-height: 100vh;
+        transition: opacity 0.5s ease;
+    }
+
+    section.active {
+        display: block;
+    }
+
+    .cake-container {
+        opacity: 0;
+        animation: pop 1.5s ease-out forwards;
+    }
+
+    .cake {
+        font-size: 120px;
+        display: inline-block;
+        position: relative;
+    }
+
+    .flame {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 14px;
+        background: radial-gradient(circle, #ffea00, #ff4500);
+        border-radius: 50%;
+        animation: flicker 0.12s infinite alternate;
+    }
+
+    @keyframes flicker {
+        0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+        100% { transform: translateX(-52%) scale(1.15); opacity: 1; }
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0); opacity: 0; }
+        70% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .letter {
+        width: 85%;
+        max-width: 700px;
+        margin: 40px auto;
+        opacity: 0;
+        font-size: 20px;
+        line-height: 1.6;
+        animation: fadeIn 2s ease forwards;
+        animation-delay: 2.3s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 { font-size: 28px; margin-bottom: 20px; }
+    p { white-space: pre-line; }
+
+    .nav-btn {
+        margin-top: 30px;
+        padding: 12px 22px;
+        background: #ffffff20;
+        color: white;
+        border: 1px solid #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .nav-btn:hover { background: #ffffff40; }
+
+    .award {
+        font-size: 22px;
+        margin: 15px 0;
+        opacity: 0;
+        animation: awardPop 0.5s forwards;
+    }
+
+    @keyframes awardPop {
+        from { transform: scale(0); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    .future-msg {
+        margin: 20px 0;
+        font-size: 20px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    /* ---------------------------------- */
+    /*            MEMORY LANE              */
+    /* ---------------------------------- */
+    .envelope-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .envelope-box {
+        width: 200px;
+        height: 150px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .envelope-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        display: none;
+    }
+
+    .envelope-cover {
+        width: 100%;
+        height: 100%;
+        background: #d2a679;
+        border-radius: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .envelope-cover::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 75px solid #e0bc8f;
+        border-radius: 8px;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<section id="home" class="active">
+    <div class="cake-container">
+        <div class="cake">🎂
+            <div class="flame"></div>
+        </div>
+    </div>
+
+    <div class="letter">
+        <h2>Happy Birthday, Lohitaksh! ❤️</h2>
+        <p>
+Happy Birthday, Lohitaksh!
+You’re truly the best bestie anyone could ever ask for. You’ve always been there for me through thick and thin, happiness and sorrow. I can’t explain how much that means to me. The memories we share and the bond we have honestly is priceless. Thank you so, so much for standing by me no matter what.
+
+I know we don’t meet often—okay fine, we never meet—but somehow our bond stays strong through constant reels, random messages, and those chaotic calls where we talk about everything and nothing at the same time. It’s crazy how we are miles apart but closest at heart.
+
+I’m forever grateful to have you. You’re probably the only best and right choice I’ve made in life!
+Thank you for staying and always being there for this weird, chaotic, childish, and crazy friend.
+
+Once again, Happy Birthday My IDIOT!!!!
+        </p>
+    </div>
+
+    <button class="nav-btn" onclick="showSection('reasons')">Next ➜</button>
+</section>
+
+<!-- REASONS -->
+<section id="reasons">
+    <h2>Reasons You’re My Bestie</h2>
+
+    <p>You understand me and my chaos.</p>
+    <p>You never leave me alone.</p>
+    <p>You make life lighter with laughs and reels.</p>
+    <p>You don't judge me.</p>
+    <p>Distance can’t break us.</p>
+    <p>You show up when it matters.</p>
+    <p>You’re a blessing in my life.</p>
+    <p>You’re my partner in crime, overthinking and everything.</p>
+    <p>You tell me the truth.</p>
+    <p>You're 100000% Loyal.</p>
+    <p>Always have my back.</p>
+    <p>You tell me all the tea.</p>
+    <p>You match my chaos level perfectly.</p>
+    <p>You’re sunshine in human form.</p>
+    <p>You make memories better.</p>
+    <p>You join my delulu moments.</p>
+    <p>You’re irreplaceable.</p>
+
+    <button class="nav-btn" onclick="showSection('home')">⬅ Back</button>
+    <button class="nav-btn" onclick="showSection('awards')">Next ➜</button>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+    <h2>Lohitaksh’s Award Ceremony 🏆</h2>
+
+    <div class="award">🏆 Best Foodie Award</div>
+    <div class="award">🥇 Best Bestie Award</div>
+    <div class="award">🎖️ Chief Reel Sender Award</div>
+    <div class="award">🤣 CEO of Being an Idiot Award</div>
+    <div class="award">💛 Most Valuable Person Award</div>
+
+    <button class="nav-btn" onclick="showSection('reasons')">⬅ Back</button>
+    <button class="nav-btn" onclick="showSection('future')">Next ➜</button>
+</section>
+
+<!-- FUTURE -->
+<section id="future">
+    <h2>Messages for the Future</h2>
+    <div class="future-msg" id="msg1">🌙 When you feel lonely: You’re never actually alone. You have me le.</div>
+    <div class="future-msg" id="msg2">☀️ When you’re sad: Take a deep breath. The world needs your smile again.</div>
+    <div class="future-msg" id="msg3">💼 When life gets stressful: You’ve survived every bad day so far. You can do it just stop overthinking.</div>
+    <div class="future-msg" id="msg4">When you miss me: Just remember we will be Besties Forever.</div>
+    <div class="future-msg" id="msg5">🎂 For your next birthday: I hope I’m still here celebrating it with you.</div>
+
+    <button class="nav-btn" onclick="showNextMessage()">Reveal Next Message</button>
+
+    <button class="nav-btn" onclick="showSection('awards')">⬅ Back</button>
+    <button class="nav-btn" onclick="showSection('memory')">Next ➜ Memory Lane 📸</button>
+</section>
+
+<!-- MEMORY LANE -->
+<section id="memory">
+    <h2>Memory Lane 📸</h2>
+    <p>Tap an envelope to reveal the memory!</p>
+
+    <div class="envelope-container">
+
+        <div class="envelope-box" onclick="openEnvelope(1)">
+            <div class="envelope-cover" id="cover1"></div>
+            <img src="img1.jpg" id="photo1" class="envelope-img">
+        </div>
+
+        <div class="envelope-box" onclick="openEnvelope(2)">
+            <div class="envelope-cover" id="cover2"></div>
+            <img src="img2.jpg" id="photo2" class="envelope-img">
+        </div>
+
+        <div class="envelope-box" onclick="openEnvelope(3)">
+            <div class="envelope-cover" id="cover3"></div>
+            <img src="img3.jpg" id="photo3" class="envelope-img">
+        </div>
+
+        <div class="envelope-box" onclick="openEnvelope(4)">
+            <div class="envelope-cover" id="cover4"></div>
+            <img src="img4.jpg" id="photo4" class="envelope-img">
+        </div>
+
+        <div class="envelope-box" onclick="openEnvelope(5)">
+            <div class="envelope-cover" id="cover5"></div>
+            <img src="img5.jpg" id="photo5" class="envelope-img">
+        </div>
+
+    </div>
+
+    <button class="nav-btn" onclick="showSection('future')">⬅ Back</button>
+    <button class="nav-btn" onclick="showSection('home')">🏠 Home</button>
+</section>
+
+<script>
+    setTimeout(() => {
+        confetti({
+            particleCount: 200,
+            spread: 90,
+            origin: { y: 0.6 }
+        });
+    }, 1500);
+
+    function showSection(sectionId) {
+        document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+        document.getElementById(sectionId).classList.add("active");
+    }
+
+    let msgIndex = 1;
+    function showNextMessage() {
+        if (msgIndex > 5) return;
+        document.getElementById("msg" + msgIndex).style.opacity = 1;
+        msgIndex++;
+    }
+
+    function openEnvelope(num) {
+        let cover = document.getElementById("cover" + num);
+        let photo = document.getElementById("photo" + num);
+
+        cover.style.opacity = "0";
+        cover.style.pointerEvents = "none";
+        photo.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
