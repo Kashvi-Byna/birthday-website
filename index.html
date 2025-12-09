@@ -126,12 +126,12 @@
     }
 
     .envelope-box {
-        width: 200px;
-        height: 150px;
+        width: 280px;      /* increased width */
+        height: 210px;     /* increased height */
         position: relative;
         cursor: pointer;
         border-radius: 10px;
-        overflow: hidden; /* clip image inside envelope */
+        overflow: hidden;
         box-shadow: 0 0 15px #d2a679;
         background: #d2a679;
     }
@@ -139,12 +139,12 @@
     .envelope-img {
         width: 100%;
         height: 100%;
-        object-fit: contain; /* <-- changed from cover to contain */
-        object-position: center center; /* center the image */
+        object-fit: contain;
+        object-position: center center;
         border-radius: 10px;
         display: none;
         transition: transform 0.3s ease;
-        background: #fff; /* optional: white background so image edges stand out */
+        background: #fff;
     }
 
     .envelope-img.show {
@@ -168,9 +168,9 @@
         position: absolute;
         top: 0;
         left: 0;
-        border-left: 100px solid transparent;
-        border-right: 100px solid transparent;
-        border-bottom: 75px solid #e0bc8f;
+        border-left: 140px solid transparent;  /* adjusted to match new width */
+        border-right: 140px solid transparent; /* adjusted */
+        border-bottom: 105px solid #e0bc8f;    /* adjusted to match new height */
         border-radius: 8px;
     }
 
