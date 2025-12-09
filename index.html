@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Happy Birthday, Lohitaksh!</title>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -114,20 +114,19 @@
         transition: opacity 0.5s ease;
     }
 
-    /* ---------------------------------- */
-    /*            MEMORY LANE              */
-    /* ---------------------------------- */
+    /* MEMORY LANE */
     .envelope-container {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         gap: 30px;
         margin-top: 30px;
+        position: relative;
     }
 
     .envelope-box {
-        width: 280px;      /* increased width */
-        height: 210px;     /* increased height */
+        width: 280px;
+        height: 210px;
         position: relative;
         cursor: pointer;
         border-radius: 10px;
@@ -143,12 +142,19 @@
         object-position: center center;
         border-radius: 10px;
         display: none;
-        transition: transform 0.3s ease;
-        background: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        z-index: 10;
+        cursor: pointer;
     }
 
-    .envelope-img.show {
+    .envelope-img.popout {
         display: block;
+        transform: translateY(-120px) scale(1.6);
+        opacity: 1;
     }
 
     .envelope-cover {
@@ -168,12 +174,11 @@
         position: absolute;
         top: 0;
         left: 0;
-        border-left: 140px solid transparent;  /* adjusted to match new width */
-        border-right: 140px solid transparent; /* adjusted */
-        border-bottom: 105px solid #e0bc8f;    /* adjusted to match new height */
+        border-left: 140px solid transparent;
+        border-right: 140px solid transparent;
+        border-bottom: 105px solid #e0bc8f;
         border-radius: 8px;
     }
-
 </style>
 </head>
 
@@ -269,27 +274,27 @@ Once again, Happy Birthday My IDIOT!!!!
 
         <div class="envelope-box" onclick="openEnvelope(1)">
             <div class="envelope-cover" id="cover1"></div>
-            <img src="img1.jpg" id="photo1" class="envelope-img">
+            <img src="img1.jpg" id="photo1" class="envelope-img" alt="Memory 1" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(2)">
             <div class="envelope-cover" id="cover2"></div>
-            <img src="img2.jpg" id="photo2" class="envelope-img">
+            <img src="img2.jpg" id="photo2" class="envelope-img" alt="Memory 2" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(3)">
             <div class="envelope-cover" id="cover3"></div>
-            <img src="img3.jpg" id="photo3" class="envelope-img">
+            <img src="img3.jpg" id="photo3" class="envelope-img" alt="Memory 3" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(4)">
             <div class="envelope-cover" id="cover4"></div>
-            <img src="img4.jpg" id="photo4" class="envelope-img">
+            <img src="img4.jpg" id="photo4" class="envelope-img" alt="Memory 4" />
         </div>
 
         <div class="envelope-box" onclick="openEnvelope(5)">
             <div class="envelope-cover" id="cover5"></div>
-            <img src="img5.jpg" id="photo5" class="envelope-img">
+            <img src="img5.jpg" id="photo5" class="envelope-img" alt="Memory 5" />
         </div>
 
     </div>
@@ -323,12 +328,27 @@ Once again, Happy Birthday My IDIOT!!!!
         let cover = document.getElementById("cover" + num);
         let photo = document.getElementById("photo" + num);
 
-        // Hide the envelope cover smoothly
+        // Fade out envelope cover
         cover.style.opacity = "0";
         cover.style.pointerEvents = "none";
 
-        // Show the image with a fade-in effect
-        photo.classList.add("show");
+        // Show and pop out the image
+        photo.style.display = "block";
+        setTimeout(() => {
+            photo.classList.add("popout");
+        }, 10);
+
+        // When clicked again, close the popped image
+        photo.onclick = () => {
+            photo.classList.remove("popout");
+            cover.style.opacity = "1";
+            cover.style.pointerEvents = "auto";
+
+            // Hide the image after transition
+            setTimeout(() => {
+                photo.style.display = "none";
+            }, 500);
+        };
     }
 </script>
 
